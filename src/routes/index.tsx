@@ -1050,21 +1050,32 @@ function ProductPage() {
         <div className="mt-10">
           <div className="mb-4 text-[13px] text-muted-foreground">Customer installations</div>
           <div className="flex gap-3 overflow-x-auto pb-2">
-            {[appPharma, appChemical, appWater, appLab, factoryAssembly, factoryCalibration].map(
-              (img, i) => (
-                <button
-                  key={i}
-                  className="group relative aspect-[4/3] w-40 sm:w-64 shrink-0 overflow-hidden rounded-2xl bg-surface"
-                >
-                  <img
-                    src={img}
-                    alt="Customer installation"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </button>
-              ),
-            )}
+            {[
+              { primary: "/k1.png", fallback: appPharma },
+              { primary: "/k2.png", fallback: appChemical },
+              { primary: "/k3.png", fallback: appWater },
+              { primary: "/k4.png", fallback: appLab },
+              { primary: "/k5.png", fallback: factoryAssembly },
+              { primary: "/k6.png", fallback: factoryCalibration },
+            ].map((item, i) => (
+              <button
+                key={i}
+                className="group relative aspect-[4/3] w-40 sm:w-64 shrink-0 overflow-hidden rounded-2xl bg-surface"
+              >
+                <img
+                  src={item.primary}
+                  alt={`Customer installation ${i + 1}`}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (target.src !== item.fallback) {
+                      target.src = item.fallback;
+                    }
+                  }}
+                />
+              </button>
+            ))}
           </div>
         </div>
       </Section>
