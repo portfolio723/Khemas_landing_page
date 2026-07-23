@@ -45,6 +45,13 @@ import appLab from "@/assets/app-lab.jpg";
 import factoryMachining from "@/assets/factory-machining.jpg";
 import factoryAssembly from "@/assets/factory-assembly.jpg";
 import factoryCalibration from "@/assets/factory-calibration.jpg";
+import webAnatomyLogo from "@/assets/black.png";
+import k1Img from "@/assets/k1.png";
+import k2Img from "@/assets/k2.png";
+import k3Img from "@/assets/k3.png";
+import k4Img from "@/assets/k4.png";
+import k5Img from "@/assets/k5.png";
+import k6Img from "@/assets/k6.png";
 
 export const Route = createFileRoute("/")({
   component: ProductPage,
@@ -394,13 +401,13 @@ function ProductPage() {
             <a href="#" className="flex items-center gap-2.5">
               <img
                 src="/logo.png"
-                alt="Khemma's Engineers"
+                alt="Kemas"
                 className="h-8 w-auto max-h-8 object-contain"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = "none";
                 }}
               />
-              <span className="text-[15px] font-medium tracking-[-0.01em]">Khemma's Engineers</span>
+              <span className="text-[15px] font-medium tracking-[-0.01em]">Kemas</span>
             </a>
             <nav className="hidden items-center gap-7 text-[13px] text-muted-foreground md:flex">
               <a href="#" className="hover:text-foreground">
@@ -1051,12 +1058,12 @@ function ProductPage() {
           <div className="mb-4 text-[13px] text-muted-foreground">Customer installations</div>
           <div className="flex gap-3 overflow-x-auto pb-2">
             {[
-              { primary: "/k1.png", fallback: appPharma },
-              { primary: "/k2.png", fallback: appChemical },
-              { primary: "/k3.png", fallback: appWater },
-              { primary: "/k4.png", fallback: appLab },
-              { primary: "/k5.png", fallback: factoryAssembly },
-              { primary: "/k6.png", fallback: factoryCalibration },
+              { primary: k1Img, fallback: "/k1.png" },
+              { primary: k2Img, fallback: "/k2.png" },
+              { primary: k3Img, fallback: "/k3.png" },
+              { primary: k4Img, fallback: "/k4.png" },
+              { primary: k5Img, fallback: "/k5.png" },
+              { primary: k6Img, fallback: "/k6.png" },
             ].map((item, i) => (
               <button
                 key={i}
@@ -1148,19 +1155,32 @@ function ProductPage() {
 
       {/* Footer */}
       <footer className="border-t border-hairline bg-surface py-10 text-[13px] text-muted-foreground pb-28 md:pb-10">
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2.5">
             <img
               src="/logo.png"
-              alt="Khemma's Engineers"
+              alt="Kemas"
               className="h-7 w-auto max-h-7 object-contain"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = "none";
               }}
             />
-            <span className="font-medium text-foreground">Khemma's Engineers</span>
+            <span className="font-medium text-foreground">Kemas</span>
           </div>
-          <p>© {new Date().getFullYear()} Khemma's Engineers. All rights reserved.</p>
+
+          <p>© {new Date().getFullYear()} Kemas. All rights reserved.</p>
+
+          <div className="flex items-center gap-2 text-[12px]">
+            <span>Designed &amp; developed by</span>
+            <div className="inline-flex items-center gap-1.5 font-medium text-foreground">
+              <img
+                src={webAnatomyLogo}
+                alt="Web Anatomy"
+                className="h-5 w-auto max-h-5 object-contain"
+              />
+              <span>Web Anatomy</span>
+            </div>
+          </div>
         </div>
       </footer>
 
