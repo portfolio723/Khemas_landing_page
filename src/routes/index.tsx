@@ -343,6 +343,26 @@ function ProductPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visibleReviewsCount, setVisibleReviewsCount] = useState(4);
   const heroRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        setActiveImg((v) => (v + 1) % gallery.length);
+      } else {
+        setActiveImg((v) => (v - 1 + gallery.length) % gallery.length);
+      }
+    }
+    touchStartX.current = null;
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -503,7 +523,11 @@ function ProductPage() {
         <div className="grid gap-6 md:gap-12 lg:grid-cols-[42fr_58fr]">
           {/* Sticky gallery */}
           <div className="lg:sticky lg:top-24 lg:self-start">
-            <div className="relative overflow-hidden rounded-3xl bg-surface group">
+            <div
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              className="relative overflow-hidden rounded-3xl bg-surface group touch-pan-y select-none"
+            >
               <div className="aspect-square">
                 <img
                   src={gallery[activeImg].src}
@@ -511,22 +535,6 @@ function ProductPage() {
                   className="h-full w-full object-cover transition-opacity duration-500"
                 />
               </div>
-
-              {/* Carousel Left / Right Arrow controls — mobile only */}
-              <button
-                onClick={() => setActiveImg((v) => (v - 1 + gallery.length) % gallery.length)}
-                className="absolute left-3 top-1/2 -translate-y-1/2 grid h-9 w-9 place-items-center rounded-full bg-background/80 text-foreground backdrop-blur shadow-sm hover:bg-background transition-colors md:hidden"
-                aria-label="Previous image"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() => setActiveImg((v) => (v + 1) % gallery.length)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 grid h-9 w-9 place-items-center rounded-full bg-background/80 text-foreground backdrop-blur shadow-sm hover:bg-background transition-colors md:hidden"
-                aria-label="Next image"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
 
               <button
                 onClick={() => setLightbox(activeImg)}
@@ -642,16 +650,16 @@ function ProductPage() {
                     <span>· Fast dispatch</span>
                   </div>
                 </div>
-                <div className="hidden flex-wrap gap-2 md:flex">
+                <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap md:flex-wrap md:gap-2 mt-4 md:mt-0">
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-2 rounded-full bg-ke-red px-5 py-3 text-[14px] text-primary-foreground transition-transform hover:scale-[1.02]"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-ke-red px-5 py-3 text-[14px] text-primary-foreground transition-transform hover:scale-[1.02]"
                   >
                     Request Quote <ArrowRight className="h-4 w-4" />
                   </a>
                   <a
                     href="#"
-                    className="inline-flex items-center gap-2 rounded-full border border-hairline bg-background px-5 py-3 text-[14px] hover:bg-surface"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-hairline bg-background px-5 py-3 text-[14px] hover:bg-surface"
                   >
                     <img
                       src="https://img.icons8.com/?size=100&id=7OeRNqg6S7Vf&format=png&color=000000"
@@ -662,7 +670,7 @@ function ProductPage() {
                   </a>
                   <a
                     href="#"
-                    className="inline-flex items-center gap-2 rounded-full border border-hairline bg-background px-5 py-3 text-[14px] hover:bg-surface"
+                    className="hidden md:inline-flex items-center gap-2 rounded-full border border-hairline bg-background px-5 py-3 text-[14px] hover:bg-surface"
                   >
                     <Phone className="h-4 w-4" /> Call Engineer
                   </a>
@@ -861,7 +869,7 @@ function ProductPage() {
               <div className="flex items-center justify-between">
                 <div className="text-[16px]">{col.name}</div>
                 {col.tag && (
-                  <span className="rounded-full bg-ke-red-soft px-2.5 py-1 text-[10px] uppercase tracking-[0.1em] text-ke-red">
+                  <span className="rounded-full bg-success/15 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.1em] text-success">
                     {col.tag}
                   </span>
                 )}
@@ -883,9 +891,10 @@ function ProductPage() {
         </div>
       </Section>
 
-      {/* SECTION — Quality Assurance (shield badges removed) */}
+      {/* SECTION — Quality Assurance */}
       <Section eyebrow="Quality Assurance" title="Every unit passes a six-stage QA workflow">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Desktop grid layout */}
+        <div className="hidden md:grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {qaSteps.map((step, i) => (
             <div
               key={step}
@@ -903,6 +912,58 @@ function ProductPage() {
               <div className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-ke-red transition-transform duration-500 group-hover:scale-x-100" />
             </div>
           ))}
+        </div>
+
+        {/* Mobile responsive quality assurance badge layout */}
+        <div className="md:hidden rounded-3xl border border-hairline bg-surface p-6 shadow-sm">
+          <div className="flex flex-col items-center text-center">
+            {/* QA Badge Image */}
+            <div className="relative mb-3 flex items-center justify-center">
+              <img
+                src="https://img.magnific.com/premium-vector/quality-assurance-checkmark-badge_102602-623.jpg"
+                alt="Quality Assurance Badge"
+                className="h-28 w-28 object-contain rounded-full shadow-md bg-white p-1"
+                onError={(e) => {
+                  // Fallback green QA checkmark badge if remote asset is blocked
+                  (e.target as HTMLImageElement).src =
+                    "https://img.icons8.com/?size=160&id=102602&format=png&color=000000";
+                }}
+              />
+            </div>
+            <span className="inline-block rounded-full bg-success/10 px-3.5 py-1 text-[12px] font-semibold text-success uppercase tracking-wider mb-1">
+              Quality Assured
+            </span>
+            <p className="text-[13px] text-muted-foreground mb-5">
+              Strict 6-stage verification & calibration workflow
+            </p>
+          </div>
+
+          {/* Checklist */}
+          <div className="space-y-3 rounded-2xl border border-hairline bg-background p-4.5 text-[14px]">
+            {[
+              "Material Inspection",
+              "Precision Machining",
+              "Leak Testing",
+              "Calibration Verified",
+              "Final Quality Check",
+              "Secure Packaging",
+            ].map((item) => (
+              <div
+                key={item}
+                className="flex items-center gap-3 border-b border-hairline/60 pb-2.5 last:border-none last:pb-0"
+              >
+                <div className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-success text-white">
+                  <Check className="h-3.5 w-3.5" />
+                </div>
+                <span className="font-medium text-foreground">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Certification badges footer */}
+          <div className="mt-5 text-center text-[12px] font-medium tracking-wide text-muted-foreground border-t border-hairline pt-4">
+            ISO • NABL • Made in India
+          </div>
         </div>
       </Section>
 
