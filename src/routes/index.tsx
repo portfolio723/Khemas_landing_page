@@ -408,7 +408,7 @@ function ProductPage() {
                   (e.target as HTMLImageElement).style.display = "none";
                 }}
               />
-              <span className="text-[15px] font-medium tracking-[-0.01em]">Kemas</span>
+              <span className="text-[15px] font-medium tracking-[-0.01em]">Kheemas</span>
             </a>
             <nav className="hidden items-center gap-7 text-[13px] text-muted-foreground md:flex">
               <a href="#overview" className="hover:text-foreground">
