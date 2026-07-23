@@ -77,13 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "KE Glass Tube Rotameter — Variable Area Flow Meter | KE Instruments" },
+      { title: "KE Glass Tube Rotameter — Variable Area Flow Meter | Khemma's Engineers" },
       {
         name: "description",
         content:
           "Industrial-grade glass tube rotameter engineered for pharmaceutical, chemical and OEM flow measurement. ISO certified, bulk manufacturing, 30-minute quotes.",
       },
-      { name: "author", content: "KE Instruments" },
+      { name: "author", content: "Khemma's Engineers" },
       { property: "og:title", content: "KE Glass Tube Rotameter — Variable Area Flow Meter" },
       {
         property: "og:description",

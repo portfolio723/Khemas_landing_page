@@ -391,11 +391,16 @@ function ProductPage() {
       <header className="sticky top-0 z-40 border-b border-hairline bg-background/85 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-4 sm:px-6">
           <div className="flex items-center gap-8">
-            <a href="#" className="flex items-center gap-2">
-              <div className="grid h-8 w-8 place-items-center rounded-md bg-ke-red text-primary-foreground">
-                <span className="text-[13px] font-medium">KE</span>
-              </div>
-              <span className="text-[15px] tracking-[-0.01em]">KE Instruments</span>
+            <a href="#" className="flex items-center gap-2.5">
+              <img
+                src="/logo.png"
+                alt="Khemma's Engineers"
+                className="h-8 w-auto max-h-8 object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = "none";
+                }}
+              />
+              <span className="text-[15px] font-medium tracking-[-0.01em]">Khemma's Engineers</span>
             </a>
             <nav className="hidden items-center gap-7 text-[13px] text-muted-foreground md:flex">
               <a href="#" className="hover:text-foreground">
@@ -1129,6 +1134,24 @@ function ProductPage() {
           ))}
         </div>
       </Section>
+
+      {/* Footer */}
+      <footer className="border-t border-hairline bg-surface py-10 text-[13px] text-muted-foreground pb-28 md:pb-10">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2.5">
+            <img
+              src="/logo.png"
+              alt="Khemma's Engineers"
+              className="h-7 w-auto max-h-7 object-contain"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = "none";
+              }}
+            />
+            <span className="font-medium text-foreground">Khemma's Engineers</span>
+          </div>
+          <p>© {new Date().getFullYear()} Khemma's Engineers. All rights reserved.</p>
+        </div>
+      </footer>
 
       {/* Floating CTA — desktop */}
       <div className="pointer-events-none fixed bottom-6 right-6 z-40 hidden md:block">
