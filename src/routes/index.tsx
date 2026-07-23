@@ -335,10 +335,11 @@ const related = [
 ];
 
 const sectionNav = [
-  ["contact", "Inquiry"],
   ["overview", "Overview"],
+  ["installations", "Customer Installations"],
   ["reviews", "Reviews"],
   ["faq", "FAQ"],
+  ["contact", "Inquiry"],
 ];
 
 function ProductPage() {
@@ -410,17 +411,17 @@ function ProductPage() {
               <span className="text-[15px] font-medium tracking-[-0.01em]">Kemas</span>
             </a>
             <nav className="hidden items-center gap-7 text-[13px] text-muted-foreground md:flex">
-              <a href="#" className="hover:text-foreground">
-                Products
+              <a href="#overview" className="hover:text-foreground">
+                Overview
               </a>
-              <a href="#" className="hover:text-foreground">
-                Industries
+              <a href="#installations" className="hover:text-foreground">
+                Installations
               </a>
-              <a href="#" className="hover:text-foreground">
-                Support
+              <a href="#reviews" className="hover:text-foreground">
+                Reviews
               </a>
-              <a href="#" className="hover:text-foreground">
-                Downloads
+              <a href="#faq" className="hover:text-foreground">
+                FAQ
               </a>
               <a href="#contact" className="hover:text-foreground">
                 Contact
@@ -455,39 +456,39 @@ function ProductPage() {
           <div className="border-t border-hairline bg-background p-4 md:hidden">
             <nav className="flex flex-col gap-3 text-[14px]">
               <a
-                href="#"
+                href="#overview"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1 hover:text-ke-red"
               >
-                Products
+                Overview &amp; Specs
               </a>
               <a
-                href="#"
+                href="#installations"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1 hover:text-ke-red"
               >
-                Industries
+                Customer Installations
               </a>
               <a
-                href="#"
+                href="#reviews"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1 hover:text-ke-red"
               >
-                Support
+                Customer Reviews
               </a>
               <a
-                href="#"
+                href="#faq"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1 hover:text-ke-red"
               >
-                Downloads
+                FAQ
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-1 hover:text-ke-red"
               >
-                Contact
+                Contact &amp; Inquiry
               </a>
               <div className="mt-2 flex flex-col gap-2 pt-2 border-t border-hairline">
                 <a
@@ -1054,7 +1055,7 @@ function ProductPage() {
         </div>
 
         {/* Review gallery */}
-        <div className="mt-10">
+        <div id="installations" className="mt-10 scroll-mt-20">
           <div className="mb-4 text-[13px] text-muted-foreground">Customer installations</div>
           <div className="flex gap-3 overflow-x-auto pb-2">
             {[
