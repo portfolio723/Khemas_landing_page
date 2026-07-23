@@ -1,0 +1,6 @@
+{
+  "name": "KE Precision",
+  "description": "Precision flow measurement instruments, rotameters, and industrial applications catalog",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
