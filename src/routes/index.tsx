@@ -204,84 +204,84 @@ const qaSteps = [
 
 const reviews = [
   {
-    initials: "AP",
-    company: "ABC Pharma",
-    industry: "Pharmaceutical",
-    country: "Hyderabad, IN",
-    rating: 5,
-    text: "Excellent accuracy for pharma batching. Calibration certificate matched our audit requirements on first pass.",
-  },
-  {
-    initials: "SC",
-    company: "Suraksha Chemicals",
-    industry: "Specialty Chemicals",
-    country: "Vadodara, IN",
-    rating: 5,
-    text: "PTFE variant has held up beautifully in a chlorinated line where our previous meter failed in six months.",
-  },
-  {
-    initials: "NW",
-    company: "NovaWater EPC",
-    industry: "Water Treatment",
-    country: "Nairobi, KE",
-    rating: 4,
-    text: "Bulk order of 240 units dispatched in 18 days with individual calibration certificates. Very organised team.",
-  },
-  {
-    initials: "IL",
-    company: "IIT Bombay — Chem Lab",
-    industry: "Research",
-    country: "Mumbai, IN",
-    rating: 5,
-    text: "Clear scale, smooth float action. Ideal for teaching lab and pilot-scale runs.",
-  },
-  {
-    initials: "MK",
-    company: "Apex Dairy & Foods",
-    industry: "Food Processing",
-    country: "Anand, IN",
-    rating: 5,
-    text: "Sanitary tri-clover fittings were custom fitted and delivered on time. Zero leakage during CIP wash cycles.",
-  },
-  {
-    initials: "RV",
-    company: "Gujarat Petrochem",
-    industry: "Petrochemical",
-    country: "Hazira, IN",
-    rating: 5,
-    text: "Heavy duty borosilicate construction handled pressure spikes with no micro-fracturing. Highly reliable meter.",
-  },
-  {
-    initials: "BS",
-    company: "Zenith HVAC Systems",
-    industry: "HVAC & Utility",
-    country: "Bengaluru, IN",
-    rating: 5,
-    text: "Integrated 50 units into our chiller skids. Great flow visibility and durable SS316 body.",
-  },
-  {
     initials: "RK",
-    company: "Sun Power Energy",
-    industry: "Solar & Utilities",
-    country: "Pune, IN",
-    rating: 4,
-    text: "Repeat order for our pure water plant. Scale legibility is far superior to imported acrylic rotameters.",
+    company: "Rajesh Kumar",
+    industry: "Plant Manager",
+    country: "Hyderabad, Telangana",
+    rating: 5,
+    text: "The Glass Tube Rotameter from Khemas Engineers has been performing consistently in our pharmaceutical production line. The build quality and accuracy have met our expectations.",
   },
   {
-    initials: "DS",
-    company: "BioHealth Labs",
-    industry: "Biotech",
-    country: "Singapore",
+    initials: "AP",
+    company: "Amit Patel",
+    industry: "Maintenance Engineer",
+    country: "Ahmedabad, Gujarat",
     rating: 5,
-    text: "NABL traceable calibration certificate made compliance verification seamless. Excellent response time.",
+    text: "Excellent product quality and prompt delivery. The installation was straightforward, and the technical support team was very helpful throughout the process.",
+  },
+  {
+    initials: "SR",
+    company: "Suresh Reddy",
+    industry: "Production Head",
+    country: "Visakhapatnam, Andhra Pradesh",
+    rating: 5,
+    text: "We've been using Khemas Glass Tube Rotameters for our process applications, and the performance has been reliable. A durable product with minimal maintenance.",
+  },
+  {
+    initials: "VS",
+    company: "Vivek Sharma",
+    industry: "Instrumentation Engineer",
+    country: "Pune, Maharashtra",
+    rating: 5,
+    text: "The product is well-engineered and provides accurate flow measurement. We are satisfied with both the product quality and after-sales support.",
+  },
+  {
+    initials: "KR",
+    company: "Karthik Rao",
+    industry: "Purchase Manager",
+    country: "Bengaluru, Karnataka",
+    rating: 5,
+    text: "The ordering process was smooth, and the team helped us select the right model for our application. Good quality product at a competitive price.",
   },
   {
     initials: "AM",
-    company: "Paramount Engineering",
-    industry: "OEM Skid Builders",
-    country: "Chennai, IN",
+    company: "Anil Mehta",
+    industry: "Engineering Manager",
+    country: "Vadodara, Gujarat",
     rating: 5,
-    text: "Their bulk pricing and OEM private labeling saved us considerable lead time on our international skids.",
+    text: "We appreciate the sturdy construction and reliable performance of the Glass Tube Rotameter. It has integrated seamlessly into our production process.",
+  },
+  {
+    initials: "PS",
+    company: "Prakash Singh",
+    industry: "Project Engineer",
+    country: "Chennai, Tamil Nadu",
+    rating: 5,
+    text: "Khemas Engineers delivered exactly what we required. The product quality, timely delivery, and technical assistance exceeded our expectations.",
+  },
+  {
+    initials: "MV",
+    company: "Manoj Verma",
+    industry: "Operations Manager",
+    country: "Baddi, Himachal Pradesh",
+    rating: 5,
+    text: "The Glass Tube Rotameter offers excellent accuracy and is easy to maintain. We would definitely consider Khemas Engineers for future requirements.",
+  },
+  {
+    initials: "SR",
+    company: "Srinivas Rao",
+    industry: "Plant Engineer",
+    country: "Hyderabad, Telangana",
+    rating: 5,
+    text: "Reliable performance, excellent finish, and quick customer support. The product has been operating without any issues since installation.",
+  },
+  {
+    initials: "DN",
+    company: "Deepak Nair",
+    industry: "Utility Manager",
+    country: "Mumbai, Maharashtra",
+    rating: 5,
+    text: "We were looking for a dependable flow measurement solution, and Khemas Engineers delivered a product that met our technical requirements perfectly.",
   },
 ];
 
@@ -341,7 +341,7 @@ function ProductPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [showStickyNav, setShowStickyNav] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [visibleReviewsCount, setVisibleReviewsCount] = useState(6);
+  const [visibleReviewsCount, setVisibleReviewsCount] = useState(4);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -494,25 +494,6 @@ function ProductPage() {
           </div>
         )}
       </header>
-
-      {/* Breadcrumb — hidden on mobile */}
-      <div className="mx-auto max-w-[1440px] px-6 pt-6 hidden md:block">
-        <div className="flex items-center gap-1.5 text-[12px] text-muted-foreground">
-          <a href="#" className="hover:text-foreground">
-            Home
-          </a>
-          <ChevronRight className="h-3 w-3" />
-          <a href="#" className="hover:text-foreground">
-            Flow Instruments
-          </a>
-          <ChevronRight className="h-3 w-3" />
-          <a href="#" className="hover:text-foreground">
-            Rotameters
-          </a>
-          <ChevronRight className="h-3 w-3" />
-          <span className="text-foreground">Glass Tube Rotameter</span>
-        </div>
-      </div>
 
       {/* HERO */}
       <section
@@ -672,7 +653,12 @@ function ProductPage() {
                     href="#"
                     className="inline-flex items-center gap-2 rounded-full border border-hairline bg-background px-5 py-3 text-[14px] hover:bg-surface"
                   >
-                    <MessageCircle className="h-4 w-4 text-success" /> WhatsApp
+                    <img
+                      src="https://img.icons8.com/?size=100&id=7OeRNqg6S7Vf&format=png&color=000000"
+                      alt="WhatsApp"
+                      className="h-4 w-4 object-contain"
+                    />{" "}
+                    WhatsApp
                   </a>
                   <a
                     href="#"
@@ -750,7 +736,12 @@ function ProductPage() {
               href="#"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-success px-5 py-3 text-[14px] text-white hover:opacity-90"
             >
-              <MessageCircle className="h-4 w-4" /> WhatsApp us for urgent support
+              <img
+                src="https://img.icons8.com/?size=100&id=16712&format=png&color=ffffff"
+                alt="WhatsApp"
+                className="h-5 w-5 object-contain"
+              />{" "}
+              WhatsApp us for urgent support
             </a>
           </div>
 
@@ -979,7 +970,7 @@ function ProductPage() {
             {visibleReviewsCount < reviews.length && (
               <div className="mt-8 text-center">
                 <button
-                  onClick={() => setVisibleReviewsCount((v) => Math.min(v + 4, reviews.length))}
+                  onClick={() => setVisibleReviewsCount((v) => Math.min(v + 6, reviews.length))}
                   className="inline-flex items-center gap-2 rounded-full border border-hairline bg-background px-6 py-3 text-[13px] hover:bg-surface transition-colors cursor-pointer"
                 >
                   Load More Reviews ({reviews.length - visibleReviewsCount} remaining)
@@ -1089,7 +1080,12 @@ function ProductPage() {
               href="#"
               className="inline-flex items-center gap-1.5 rounded-full border border-hairline px-3 py-1.5 text-[12px] hover:bg-surface"
             >
-              <MessageCircle className="h-3.5 w-3.5 text-success" /> WhatsApp
+              <img
+                src="https://img.icons8.com/?size=100&id=7OeRNqg6S7Vf&format=png&color=000000"
+                alt="WhatsApp"
+                className="h-3.5 w-3.5 object-contain"
+              />{" "}
+              WhatsApp
             </a>
             <a
               href="#contact"
@@ -1120,7 +1116,12 @@ function ProductPage() {
             href="#"
             className="inline-flex items-center justify-center gap-1.5 rounded-full border border-hairline px-3 py-2.5 text-[13px]"
           >
-            <MessageCircle className="h-3.5 w-3.5 text-success" /> WhatsApp
+            <img
+              src="https://img.icons8.com/?size=100&id=7OeRNqg6S7Vf&format=png&color=000000"
+              alt="WhatsApp"
+              className="h-3.5 w-3.5 object-contain"
+            />{" "}
+            WhatsApp
           </a>
           <a
             href="#"
