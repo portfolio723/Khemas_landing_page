@@ -595,7 +595,7 @@ function ProductPage() {
                 <span className="rounded-full bg-surface px-3 py-1">Industrial Grade</span>
                 <span className="rounded-full bg-surface px-3 py-1">For Pharmaceutical</span>
               </div>
-              <h1 className="mt-4 text-[36px] leading-[1.05] tracking-[-0.02em] sm:text-[44px] md:text-[56px]">
+              <h1 className="mt-4 text-[26px] sm:text-[44px] md:text-[56px] leading-[1.08] tracking-[-0.02em]">
                 KE Glass Tube Rotameter
               </h1>
               <p className="mt-3 text-[15px] text-muted-foreground">
@@ -988,7 +988,7 @@ function ProductPage() {
               (img, i) => (
                 <button
                   key={i}
-                  className="group relative aspect-[4/3] w-64 shrink-0 overflow-hidden rounded-2xl bg-surface"
+                  className="group relative aspect-[4/3] w-40 sm:w-64 shrink-0 overflow-hidden rounded-2xl bg-surface"
                 >
                   <img
                     src={img}
@@ -1042,7 +1042,7 @@ function ProductPage() {
 
       {/* SECTION — Related */}
       <Section eyebrow="Related Products" title="Complete your flow measurement stack">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 pb-16 md:pb-0">
           {related.map((r, i) => (
             <a
               key={r.title}
@@ -1119,7 +1119,7 @@ function ProductPage() {
             <img
               src="https://img.icons8.com/?size=100&id=7OeRNqg6S7Vf&format=png&color=000000"
               alt="WhatsApp"
-              className="h-3.5 w-3.5 object-contain"
+              className="h-5 w-5 object-contain"
             />{" "}
             WhatsApp
           </a>
